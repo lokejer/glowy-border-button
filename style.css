@@ -1,0 +1,64 @@
+body {
+  background-color: #07090c;
+}
+
+a {
+  text-decoration: none;
+}
+
+.glowy-btn {
+  border: 1.4px solid white;
+  border-radius: 8px;
+  background-color: #07090c;
+  color: white;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.glowy-btn:hover {
+  border-color: transparent;
+}
+
+.glowy-btn:hover::before,
+.glowy-btn:hover::after {
+  opacity: 1;
+}
+
+.glowy-btn::before,
+.glowy-btn::after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  inset: -2px;
+  border-radius: 8px;
+  z-index: -1;
+  background: linear-gradient(30deg, 
+    hsl(0, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(0, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(0, 100%, 50%)
+  );
+  background-size: 400% 100%;
+  animation: borderFlow 5s linear infinite;
+  transition: opacity 1s ease;
+}
+
+/* border shadow */
+.glowy-btn::after {
+  inset: -3px;
+  filter: blur(16px);
+}
+
+@keyframes borderFlow {
+  0% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
+}
